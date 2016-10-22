@@ -1,0 +1,7 @@
+#!/usr/bin/ruby
+
+data = STDIN.read
+
+hash = `git log --pretty=format:%h -1`
+
+puts data.gsub( '$Hash$', '$Hash: ' + hash.to_s + '$' )

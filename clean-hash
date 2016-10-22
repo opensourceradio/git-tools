@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+##############################################################################
+##
+## Remove the git hash string from the $Hash$ tag in a source file.
+## This is used in the "clean" filter when checking a file into a git repo.
+##
+##############################################################################
+
+while (<>) {
+
+    # Strip everything after $Hash and before a single quote at the
+    # end of the line.
+    s{\$Hash[^\$]*\$'$}{\$Hash\$'};
+
+    print;
+
+}
