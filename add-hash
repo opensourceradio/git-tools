@@ -1,7 +1,21 @@
-#!/usr/bin/ruby
+#!/usr/bin/perl
 
-data = STDIN.read
+##############################################################################
+##
+## Add the git hash string from the current commit to the $Hash$ tag in a source file.
+## This is used in the "smudge" filter when checking out a file from a git repo.
+##
+##############################################################################
 
-hash = `git log --pretty=format:%h -1`
+my $hash = `git log --pretty=format:%h -1`;
+chomp $hash;
 
-puts data.gsub( '$Hash$', '$Hash: ' + hash.to_s + '$' )
+while (<>) {
+
+    # Add the hash to the end of the $Hash$ parameter in the file.
+    # Ruby equivalent: puts data.gsub( '$Hash$', '$Hash: ' + hash.to_s + '$' )
+    s{\$Hash\$}{\$Hash: $hash\$};
+
+    print;
+
+}
