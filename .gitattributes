@@ -1,1 +1,3 @@
-* filter=buildsub
+# This would normally be uncommented, but we do not want to use
+# this filter in this source tree.
+#* filter=buildsub
