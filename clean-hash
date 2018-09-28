@@ -9,9 +9,8 @@
 
 while (<>) {
 
-    # Strip everything after $Hash and before a single quote at the
-    # end of the line.
-    s{\$Hash[^\$]*\$'$}{\$Hash\$'};
+    # Strip everything after $Hash up to the "closing" dollar sign.
+    s{\$Hash[^\$]*\$(;?)}{\$Hash\$$1};
 
     print;
 
